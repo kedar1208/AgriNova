@@ -1,0 +1,168 @@
+"""Strings for the assistant in English (en), Hindi (hi) and Marathi (mr). Numbers always come from the app's own calculations;
+only the wording lives here. Crop names that are not listed fall back to the English name."""
+LANGS = {"en": "English", "hi": "हिन्दी", "mr": "मराठी"}
+
+HAZARD = {
+    "en": {"drought": "Drought / dry spell", "heat": "Heat stress", "rain": "Heavy rainfall", "flood": "Waterlogging / flood", "cold": "Cold stress", "fungal": "Fungal / humid-weather risk"},
+    "hi": {"drought": "सूखा / शुष्क अवधि", "heat": "गर्मी का तनाव", "rain": "भारी बारिश", "flood": "जलभराव / बाढ़", "cold": "ठंड का तनाव", "fungal": "फफूंद / नम मौसम का जोखिम"},
+    "mr": {"drought": "दुष्काळ / कोरडा काळ", "heat": "उष्णतेचा ताण", "rain": "अतिवृष्टी", "flood": "पाणी साचणे / पूर", "cold": "थंडीचा ताण", "fungal": "बुरशी / दमट हवामानाचा धोका"},
+}
+CAT = {
+    "en": {"Low": "Low", "Moderate": "Moderate", "High": "High", "Severe": "Severe"},
+    "hi": {"Low": "कम", "Moderate": "मध्यम", "High": "अधिक", "Severe": "गंभीर"},
+    "mr": {"Low": "कमी", "Moderate": "मध्यम", "High": "जास्त", "Severe": "गंभीर"},
+}
+CROP = {
+    "hi": {"Rice": "धान (चावल)", "Wheat": "गेहूं", "Maize": "मक्का", "Cotton": "कपास", "Soybean": "सोयाबीन", "Sugarcane": "गन्ना", "Tomato": "टमाटर", "Groundnut": "मूंगफली"},
+    "mr": {"Rice": "भात (तांदूळ)", "Wheat": "गहू", "Maize": "मका", "Cotton": "कापूस", "Soybean": "सोयाबीन", "Sugarcane": "ऊस", "Tomato": "टोमॅटो", "Groundnut": "भुईमूग"},
+}
+STAGE = {
+    "en": ["Germination/Establishment", "Vegetative", "Flowering/Reproductive", "Grain/Fruit filling", "Maturity/Harvest"],
+    "hi": ["अंकुरण / स्थापना", "वानस्पतिक वृद्धि", "फूल / प्रजनन अवस्था", "दाना / फल भराव", "परिपक्वता / कटाई"],
+    "mr": ["उगवण / स्थापना", "शाकीय वाढ", "फुलोरा / प्रजनन अवस्था", "दाणे / फळ भरणे", "परिपक्वता / काढणी"],
+}
+PRIORITY = {
+    "en": {"profit": "highest profit", "water": "least water", "risk": "lowest risk", "balanced": "balanced"},
+    "hi": {"profit": "सबसे अधिक लाभ", "water": "सबसे कम पानी", "risk": "सबसे कम जोखिम", "balanced": "संतुलित"},
+    "mr": {"profit": "सर्वाधिक नफा", "water": "सर्वात कमी पाणी", "risk": "सर्वात कमी धोका", "balanced": "संतुलित"},
+}
+GENERIC_ACTION = {
+    "hi": {"Low": "कोई विशेष कार्रवाई ज़रूरी नहीं; सामान्य निगरानी रखें।", "Moderate": "खेत की निगरानी बढ़ाएँ और 2-3 दिनों में मौसम दोबारा देखें।",
+           "High": "इसी सप्ताह बचाव की योजना बनाएँ और स्थानीय कृषि सलाह लें।", "Severe": "तुरंत कार्रवाई करें और स्थानीय कृषि विभाग / कृषि विज्ञान केंद्र से सलाह लें।"},
+    "mr": {"Low": "विशेष कृतीची गरज नाही; नेहमीप्रमाणे निरीक्षण ठेवा.", "Moderate": "शेताचे निरीक्षण वाढवा आणि 2-3 दिवसांत हवामान पुन्हा तपासा.",
+           "High": "याच आठवड्यात संरक्षणाचे नियोजन करा आणि स्थानिक कृषी सल्ला घ्या.", "Severe": "तातडीने कृती करा आणि स्थानिक कृषी विभाग / कृषी विज्ञान केंद्राचा सल्ला घ्या."},
+}
+
+# ---- interface strings -------------------------------------------------------------------------------------------------
+UI = {
+    "en": dict(title="Farm assistant", sub="Ask about your weather, crop risks, irrigation, growth stage, farm plan, budget, optimisation results or report. It explains numbers the app has already calculated.",
+               eyebrow="Assistant", lang="Language", placeholder="Ask about your farm...", clear="Clear conversation", empty="No questions yet", empty_text="Pick a suggested question or type your own below.",
+               offline_t="Offline rule-based mode", offline_d="No language-model provider is configured, so answers are written by fixed rules from the numbers on screen. Nothing leaves your computer.",
+               llm_t="Language-model provider configured", llm_d="If you allow it below, a short summary with no location (area, budget and water rounded) is sent to the provider to write the answer. Answers can still be wrong - check them against the cards.",
+               allow="Allow sending the redacted summary to the provider", mode_off="Answered by offline rules from the app's calculated numbers.",
+               mode_llm="Written by the configured language model from a redacted summary of the numbers on screen. Check it against the cards.",
+               fail="The language-model provider could not be reached, so this answer comes from the offline rules instead.",
+               suggest="Suggested questions", s=["Give me a summary of my farm today", "What is the weather this week?", "Which crop risks are highest?", "Do I need to irrigate?",
+                                                "Which growth stage is my crop in?", "How is my budget used in the plan?", "Explain the optimisation results", "What is in the report?"]),
+    "hi": dict(title="कृषि सहायक", sub="मौसम, फसल जोखिम, सिंचाई, फसल की अवस्था, खेत की योजना, बजट, ऑप्टिमाइज़ेशन परिणाम या रिपोर्ट के बारे में पूछें। यह ऐप द्वारा पहले से निकाले गए आँकड़े समझाता है।",
+               eyebrow="सहायक", lang="भाषा", placeholder="अपने खेत के बारे में पूछें...", clear="बातचीत साफ़ करें", empty="अभी कोई प्रश्न नहीं", empty_text="नीचे सुझाया गया प्रश्न चुनें या अपना प्रश्न लिखें।",
+               offline_t="ऑफ़लाइन नियम-आधारित मोड", offline_d="कोई भाषा-मॉडल प्रदाता सेट नहीं है, इसलिए उत्तर स्क्रीन के आँकड़ों से निश्चित नियमों द्वारा बनते हैं। कुछ भी आपके कंप्यूटर से बाहर नहीं जाता।",
+               llm_t="भाषा-मॉडल प्रदाता सेट है", llm_d="नीचे अनुमति देने पर स्थान के बिना एक छोटा सारांश (क्षेत्र, बजट और पानी पूर्णांकित) उत्तर लिखने के लिए प्रदाता को भेजा जाता है। उत्तर गलत भी हो सकते हैं - कार्डों से मिलान करें।",
+               allow="प्रदाता को संक्षिप्त (स्थान-रहित) सारांश भेजने की अनुमति दें", mode_off="ऐप के निकाले गए आँकड़ों से ऑफ़लाइन नियमों द्वारा दिया गया उत्तर।",
+               mode_llm="स्क्रीन के आँकड़ों के संक्षिप्त सारांश से भाषा-मॉडल द्वारा लिखा गया उत्तर। कार्डों से मिलान करें।",
+               fail="भाषा-मॉडल प्रदाता तक नहीं पहुँच सके, इसलिए यह उत्तर ऑफ़लाइन नियमों से दिया गया है।",
+               suggest="सुझाए गए प्रश्न", s=["आज मेरे खेत का सारांश बताइए", "इस सप्ताह मौसम कैसा रहेगा?", "कौन-से फसल जोखिम सबसे अधिक हैं?", "क्या मुझे सिंचाई करनी चाहिए?",
+                                         "मेरी फसल किस अवस्था में है?", "योजना में मेरा बजट कैसे उपयोग हो रहा है?", "ऑप्टिमाइज़ेशन के परिणाम समझाइए", "रिपोर्ट में क्या है?"]),
+    "mr": dict(title="शेती सहाय्यक", sub="हवामान, पिकावरील धोके, सिंचन, पिकाची अवस्था, शेती नियोजन, बजेट, ऑप्टिमायझेशन निकाल किंवा अहवालाबद्दल विचारा. हे अॅपने आधीच काढलेले आकडे समजावून सांगते.",
+               eyebrow="सहाय्यक", lang="भाषा", placeholder="तुमच्या शेताबद्दल विचारा...", clear="संभाषण पुसा", empty="अजून प्रश्न नाहीत", empty_text="खाली सुचवलेला प्रश्न निवडा किंवा स्वतःचा प्रश्न लिहा.",
+               offline_t="ऑफलाइन नियमाधारित पद्धत", offline_d="कोणताही भाषा-मॉडेल पुरवठादार सेट केलेला नाही, म्हणून उत्तरे स्क्रीनवरील आकड्यांवरून ठरलेल्या नियमांनी तयार होतात. काहीही तुमच्या संगणकाबाहेर जात नाही.",
+               llm_t="भाषा-मॉडेल पुरवठादार सेट आहे", llm_d="खाली परवानगी दिल्यास ठिकाणाशिवाय एक छोटा सारांश (क्षेत्र, बजेट आणि पाणी पूर्णांकित) उत्तर लिहिण्यासाठी पुरवठादाराला पाठवला जातो. उत्तरे चुकीची असू शकतात - कार्डांशी पडताळा.",
+               allow="पुरवठादाराला संक्षिप्त (ठिकाणाशिवाय) सारांश पाठवण्याची परवानगी द्या", mode_off="अॅपने काढलेल्या आकड्यांवरून ऑफलाइन नियमांनी दिलेले उत्तर.",
+               mode_llm="स्क्रीनवरील आकड्यांच्या संक्षिप्त सारांशावरून भाषा-मॉडेलने लिहिलेले उत्तर. कार्डांशी पडताळा.",
+               fail="भाषा-मॉडेल पुरवठादाराशी संपर्क होऊ शकला नाही, म्हणून हे उत्तर ऑफलाइन नियमांनी दिले आहे.",
+               suggest="सुचवलेले प्रश्न", s=["आज माझ्या शेताचा सारांश सांगा", "या आठवड्यात हवामान कसे असेल?", "कोणते पीक धोके सर्वाधिक आहेत?", "मला सिंचन करावे लागेल का?",
+                                         "माझे पीक कोणत्या अवस्थेत आहे?", "नियोजनात माझे बजेट कसे वापरले जाते?", "ऑप्टिमायझेशनचे निकाल समजावून सांगा", "अहवालात काय आहे?"]),
+}
+
+# ---- answer templates --------------------------------------------------------------------------------------------------
+T = {
+    "en": dict(
+        intro="I can explain the numbers this app has already calculated: weather, crop risks, irrigation, growth stage, the farm plan, budget, optimisation results and the report. Try one of the suggested questions.",
+        summary="**{crop}** - {stage} stage (day {das}). Highest weather risk this week: **{driver}**, {cat} ({score:.0f}/100).",
+        summary_unsown="**{crop}** is not sown yet (sowing in {d} days). Highest weather risk this week: **{driver}**, {cat} ({score:.0f}/100).",
+        wx_today="Today: {tmax:.0f}°C high / {tmin:.0f}°C low, rain {rain:.0f} mm.", wx_week="Next {days} days: about {rain:.0f} mm rain in total, hottest day {hot:.0f}°C, coolest night {cold:.0f}°C.",
+        wx_live="Weather source: Open-Meteo (live), updated {when}.", wx_sample="Weather source: SAMPLE (synthetic) data - for demonstration only, not for real farm decisions.",
+        wx_gaps="{n} day(s) in the series contained filled-in values.", wx_norh="Humidity data was missing, so rain stands in for the fungal-weather indicator.",
+        risk_head="Weather risks for the next 7 days (heuristic exposure scores, not probabilities of crop loss or disease):", risk_line="- {name}: **{cat}** ({score:.0f}/100)",
+        risk_none="No hazard reached the Moderate level this week.", risk_focus="**{name}** is **{cat}** ({score:.0f}/100). What to do: {action}",
+        irr_needed="Irrigation is needed: about {vol:,.0f} m³ per round ({mm:.0f} mm gross depth).", irr_post="Postpone irrigation - rain is expected; re-check after it passes.",
+        irr_none="Irrigation is not needed now; soil water stays above the stress level.", irr_est="Soil moisture here is an estimate from a water-balance model, not a measurement.",
+        irr_meas="This uses the soil moisture you measured.", irr_cover="Your season water of {w:,.0f} m³ covers about {r:.1f} rounds of this size.", irr_stage="Decision: {d}",
+        stage_sown="{crop} is in the **{stage}** stage, day {das} of about {dur} (around {pct}% of the season).", stage_harv=" Harvest is about {d} days away.", stage_next=" The next stage starts in about {d} days.",
+        stage_sens=" At this stage it is most sensitive to: {s}.", stage_unsown="{crop} is not sown yet; sowing is {d} days away.",
+        stage_note="Stages use a generic split of the crop duration, not a crop-specific phenology model.",
+        plan_none="No FarmOptimizer plan exists yet in this session. Open FarmOptimizer (Crop planner) once and I can explain the plan.",
+        plan_head="Recommended plan ({prio} priority), on {area:.1f} acres:", plan_line="- {crop}: {acres:.1f} acres ({share:.0f}%)",
+        budget_text="Your budget is {budget}.", budget_plan="The recommended plan invests about {inv} ({pct:.0f}% of the budget) and plants {used:.1f} acres. Planned irrigation is limited by your {w:,.0f} m³ water entry.",
+        budget_noplan="Run FarmOptimizer to see how much of the budget a plan would use.",
+        opt_head="Optimisation results ({prio} priority) - simulated seasons, not forecasts:",
+        opt_body="- Expected profit: {ep}\n- Worst-10% average (CVaR): {cvar}\n- Chance of a loss: {pl:.0f}%\n- Resilience score: {res:.0f}/100\n- Expected extra irrigation: {w:,.0f} m³",
+        opt_base="Compared with an even split across the same crops: expected profit {d_ep}, worst-10% average {d_cvar}.",
+        opt_cmp="Risk scenario (assumption-based what-if, not a forecast): {txt}", opt_limits="Prices, costs and yields are starting assumptions; results are not guarantees.",
+        report_text="The PDF report (Report page) collects your farm details, seven-day risks, irrigation advice and alerts.", report_yes="It will also include the FarmOptimizer plan and comparison, because you have run FarmOptimizer in this session.",
+        report_no="Run FarmOptimizer first if you want the plan and comparison included.",
+        fallback="I did not match that to something I can answer from the app's numbers. I can explain: weather, crop risks, irrigation, growth stage, the farm plan, budget, optimisation results and the report.",
+        sample_note="Note: the weather here is sample data.", crop_note=""),
+    "hi": dict(
+        intro="मैं इस ऐप द्वारा पहले से निकाले गए आँकड़े समझा सकता हूँ: मौसम, फसल जोखिम, सिंचाई, फसल की अवस्था, खेत की योजना, बजट, ऑप्टिमाइज़ेशन परिणाम और रिपोर्ट। कोई सुझाया गया प्रश्न चुनें।",
+        summary="**{crop}** - {stage} अवस्था (बुवाई के {das} दिन बाद)। इस सप्ताह सबसे बड़ा मौसम जोखिम: **{driver}**, स्तर {cat} ({score:.0f}/100)।",
+        summary_unsown="**{crop}** की बुवाई अभी नहीं हुई है ({d} दिन बाद)। इस सप्ताह सबसे बड़ा मौसम जोखिम: **{driver}**, स्तर {cat} ({score:.0f}/100)।",
+        wx_today="आज: अधिकतम {tmax:.0f}°C / न्यूनतम {tmin:.0f}°C, बारिश {rain:.0f} मिमी।", wx_week="अगले {days} दिन: कुल लगभग {rain:.0f} मिमी बारिश, सबसे गर्म दिन {hot:.0f}°C, सबसे ठंडी रात {cold:.0f}°C।",
+        wx_live="मौसम स्रोत: Open-Meteo (लाइव), अद्यतन: {when}।", wx_sample="मौसम स्रोत: नमूना (कृत्रिम) डेटा - केवल प्रदर्शन के लिए, वास्तविक खेती के निर्णयों के लिए नहीं।",
+        wx_gaps="श्रृंखला के {n} दिनों में भरे गए (अनुमानित) मान हैं।", wx_norh="नमी (आर्द्रता) का डेटा नहीं था, इसलिए फफूंद-मौसम संकेतक के लिए बारिश का उपयोग हुआ।",
+        risk_head="अगले 7 दिनों के मौसम जोखिम (ये अनुमानित जोखिम-अंक हैं, फसल-हानि या रोग की संभावना नहीं):", risk_line="- {name}: **{cat}** ({score:.0f}/100)",
+        risk_none="इस सप्ताह कोई भी जोखिम 'मध्यम' स्तर तक नहीं पहुँचा।", risk_focus="**{name}**: स्तर **{cat}** ({score:.0f}/100)। क्या करें: {action}",
+        irr_needed="सिंचाई ज़रूरी है: प्रति बार लगभग {vol:,.0f} घन मीटर ({mm:.0f} मिमी गहराई)।", irr_post="सिंचाई टालें - बारिश की संभावना है; बारिश के बाद दोबारा जाँचें।",
+        irr_none="अभी सिंचाई की ज़रूरत नहीं है; मिट्टी में पानी तनाव-स्तर से ऊपर रहेगा।", irr_est="यहाँ मिट्टी की नमी जल-संतुलन मॉडल का अनुमान है, माप नहीं।",
+        irr_meas="यह आपके द्वारा मापी गई मिट्टी की नमी पर आधारित है।", irr_cover="आपका मौसमी पानी {w:,.0f} घन मीटर इस आकार के लगभग {r:.1f} बार की सिंचाई के लिए पर्याप्त है।", irr_stage="",
+        stage_sown="{crop} अभी **{stage}** अवस्था में है, लगभग {dur} दिन के चक्र का {das}वाँ दिन (करीब {pct}%)।", stage_harv=" कटाई लगभग {d} दिन दूर है।", stage_next=" अगली अवस्था लगभग {d} दिन में शुरू होगी।",
+        stage_sens="", stage_unsown="{crop} की बुवाई अभी नहीं हुई है; बुवाई {d} दिन बाद है।",
+        stage_note="अवस्थाएँ फसल-अवधि का सामान्य विभाजन हैं, किसी फसल-विशेष मॉडल पर आधारित नहीं।",
+        plan_none="इस सत्र में अभी FarmOptimizer की कोई योजना नहीं बनी है। एक बार FarmOptimizer (फसल योजनाकार) खोलें, फिर मैं योजना समझा सकूँगा।",
+        plan_head="अनुशंसित योजना (प्राथमिकता: {prio}), {area:.1f} एकड़ पर:", plan_line="- {crop}: {acres:.1f} एकड़ ({share:.0f}%)",
+        budget_text="आपका बजट {budget} है।", budget_plan="अनुशंसित योजना में लगभग {inv} का निवेश ({pct:.0f}% बजट) होता है और {used:.1f} एकड़ में बुवाई होती है। नियोजित सिंचाई आपके दिए {w:,.0f} घन मीटर पानी तक सीमित है।",
+        budget_noplan="योजना बजट का कितना हिस्सा उपयोग करेगी, यह देखने के लिए FarmOptimizer चलाएँ।",
+        opt_head="ऑप्टिमाइज़ेशन परिणाम (प्राथमिकता: {prio}) - ये सिम्युलेटेड मौसम हैं, पूर्वानुमान नहीं:",
+        opt_body="- अपेक्षित लाभ: {ep}\n- सबसे खराब 10% का औसत (CVaR): {cvar}\n- घाटे की संभावना: {pl:.0f}%\n- लचीलापन अंक: {res:.0f}/100\n- अपेक्षित अतिरिक्त सिंचाई: {w:,.0f} घन मीटर",
+        opt_base="इन्हीं फसलों में बराबर बँटवारे की तुलना में: अपेक्षित लाभ {d_ep}, सबसे खराब 10% का औसत {d_cvar}।",
+        opt_cmp="जोखिम परिदृश्य (मान्यताओं पर आधारित 'क्या होगा अगर', पूर्वानुमान नहीं): पुरानी योजना रखने पर औसत लाभ {k_ep} (सबसे खराब 10%: {k_cvar}); जोखिम-अनुकूल योजना में {r_ep} (सबसे खराब 10%: {r_cvar})। पानी {w0:,.0f} से {w1:,.0f} घन मीटर माना गया।",
+        opt_limits="कीमतें, लागत और उपज शुरुआती मान्यताएँ हैं; परिणाम गारंटी नहीं हैं।",
+        report_text="PDF रिपोर्ट (रिपोर्ट पृष्ठ) में आपके खेत का विवरण, सात दिन के जोखिम, सिंचाई सलाह और चेतावनियाँ होती हैं।", report_yes="इस सत्र में आपने FarmOptimizer चलाया है, इसलिए रिपोर्ट में उसकी योजना और तुलना भी शामिल होगी।",
+        report_no="योजना और तुलना शामिल करने के लिए पहले FarmOptimizer चलाएँ।",
+        fallback="यह प्रश्न मैं ऐप के आँकड़ों से नहीं समझ पाया। मैं इन विषयों पर बता सकता हूँ: मौसम, फसल जोखिम, सिंचाई, फसल की अवस्था, खेत की योजना, बजट, ऑप्टिमाइज़ेशन परिणाम और रिपोर्ट।",
+        sample_note="ध्यान दें: यहाँ का मौसम नमूना डेटा है।", crop_note=""),
+    "mr": dict(
+        intro="हे अॅपने आधीच काढलेले आकडे मी समजावून सांगू शकतो: हवामान, पीक धोके, सिंचन, पिकाची अवस्था, शेती नियोजन, बजेट, ऑप्टिमायझेशन निकाल आणि अहवाल. सुचवलेला एखादा प्रश्न निवडा.",
+        summary="**{crop}** - {stage} अवस्था (पेरणीनंतर {das} दिवस). या आठवड्यातील सर्वात मोठा हवामान धोका: **{driver}**, पातळी {cat} ({score:.0f}/100).",
+        summary_unsown="**{crop}** ची पेरणी अजून झालेली नाही ({d} दिवसांनी). या आठवड्यातील सर्वात मोठा हवामान धोका: **{driver}**, पातळी {cat} ({score:.0f}/100).",
+        wx_today="आज: कमाल {tmax:.0f}°C / किमान {tmin:.0f}°C, पाऊस {rain:.0f} मिमी.", wx_week="पुढील {days} दिवस: एकूण सुमारे {rain:.0f} मिमी पाऊस, सर्वात उष्ण दिवस {hot:.0f}°C, सर्वात थंड रात्र {cold:.0f}°C.",
+        wx_live="हवामान स्रोत: Open-Meteo (थेट), अद्ययावत: {when}.", wx_sample="हवामान स्रोत: नमुना (कृत्रिम) डेटा - फक्त प्रात्यक्षिकासाठी, प्रत्यक्ष शेतीच्या निर्णयांसाठी नाही.",
+        wx_gaps="मालिकेतील {n} दिवसांत भरलेली (अंदाजित) मूल्ये आहेत.", wx_norh="आर्द्रतेचा डेटा नव्हता, म्हणून बुरशी-हवामान निर्देशकासाठी पावसाचा वापर केला.",
+        risk_head="पुढील 7 दिवसांचे हवामान धोके (हे अंदाजित जोखीम-गुण आहेत, पीक-नुकसान किंवा रोगाची शक्यता नाही):", risk_line="- {name}: **{cat}** ({score:.0f}/100)",
+        risk_none="या आठवड्यात कोणताही धोका 'मध्यम' पातळीपर्यंत पोहोचला नाही.", risk_focus="**{name}**: पातळी **{cat}** ({score:.0f}/100). काय करावे: {action}",
+        irr_needed="सिंचन आवश्यक आहे: प्रत्येक फेरीला सुमारे {vol:,.0f} घन मीटर ({mm:.0f} मिमी खोली).", irr_post="सिंचन पुढे ढकला - पावसाची शक्यता आहे; पाऊस गेल्यावर पुन्हा तपासा.",
+        irr_none="सध्या सिंचनाची गरज नाही; जमिनीतील पाणी ताणाच्या पातळीपेक्षा वर राहील.", irr_est="येथील जमिनीतील ओलावा जल-संतुलन मॉडेलचा अंदाज आहे, मोजमाप नाही.",
+        irr_meas="हे तुम्ही मोजलेल्या जमिनीतील ओलाव्यावर आधारित आहे.", irr_cover="तुमचे हंगामी पाणी {w:,.0f} घन मीटर या आकाराच्या सुमारे {r:.1f} फेऱ्यांसाठी पुरेसे आहे.", irr_stage="",
+        stage_sown="{crop} सध्या **{stage}** अवस्थेत आहे, सुमारे {dur} दिवसांच्या चक्रातील {das} वा दिवस (सुमारे {pct}%).", stage_harv=" काढणी सुमारे {d} दिवसांवर आहे.", stage_next=" पुढील अवस्था सुमारे {d} दिवसांत सुरू होईल.",
+        stage_sens="", stage_unsown="{crop} ची पेरणी अजून झालेली नाही; पेरणी {d} दिवसांवर आहे.",
+        stage_note="अवस्था म्हणजे पिकाच्या कालावधीचे सर्वसाधारण विभाजन आहे, पीक-विशिष्ट मॉडेल नव्हे.",
+        plan_none="या सत्रात अजून FarmOptimizer ची कोणतीही योजना तयार झालेली नाही. एकदा FarmOptimizer (पीक नियोजक) उघडा, मग मी योजना समजावून सांगेन.",
+        plan_head="शिफारस केलेली योजना (प्राधान्य: {prio}), {area:.1f} एकरावर:", plan_line="- {crop}: {acres:.1f} एकर ({share:.0f}%)",
+        budget_text="तुमचे बजेट {budget} आहे.", budget_plan="शिफारस केलेल्या योजनेत सुमारे {inv} गुंतवणूक ({pct:.0f}% बजेट) होते आणि {used:.1f} एकरावर लागवड होते. नियोजित सिंचन तुम्ही दिलेल्या {w:,.0f} घन मीटर पाण्यापुरते मर्यादित आहे.",
+        budget_noplan="योजना बजेटचा किती भाग वापरेल हे पाहण्यासाठी FarmOptimizer चालवा.",
+        opt_head="ऑप्टिमायझेशन निकाल (प्राधान्य: {prio}) - हे सिम्युलेटेड हंगाम आहेत, अंदाज नाही:",
+        opt_body="- अपेक्षित नफा: {ep}\n- सर्वात वाईट 10% ची सरासरी (CVaR): {cvar}\n- तोट्याची शक्यता: {pl:.0f}%\n- लवचिकता गुण: {res:.0f}/100\n- अपेक्षित अतिरिक्त सिंचन: {w:,.0f} घन मीटर",
+        opt_base="त्याच पिकांमध्ये समान वाटणीच्या तुलनेत: अपेक्षित नफा {d_ep}, सर्वात वाईट 10% ची सरासरी {d_cvar}.",
+        opt_cmp="धोका परिस्थिती (गृहितकांवर आधारित 'असे झाले तर', अंदाज नाही): जुनी योजना ठेवल्यास सरासरी नफा {k_ep} (सर्वात वाईट 10%: {k_cvar}); धोका-अनुकूल योजनेत {r_ep} (सर्वात वाईट 10%: {r_cvar}). पाणी {w0:,.0f} वरून {w1:,.0f} घन मीटर गृहीत धरले.",
+        opt_limits="किमती, खर्च आणि उत्पादन ही सुरुवातीची गृहितके आहेत; निकाल हमी नाहीत.",
+        report_text="PDF अहवालात (अहवाल पृष्ठ) तुमच्या शेताचा तपशील, सात दिवसांचे धोके, सिंचन सल्ला आणि इशारे असतात.", report_yes="या सत्रात तुम्ही FarmOptimizer चालवले आहे, म्हणून अहवालात त्याची योजना आणि तुलना देखील येईल.",
+        report_no="योजना आणि तुलना समाविष्ट करण्यासाठी आधी FarmOptimizer चालवा.",
+        fallback="हा प्रश्न मला अॅपच्या आकड्यांवरून समजला नाही. मी या विषयांवर सांगू शकतो: हवामान, पीक धोके, सिंचन, पिकाची अवस्था, शेती नियोजन, बजेट, ऑप्टिमायझेशन निकाल आणि अहवाल.",
+        sample_note="टीप: येथील हवामान नमुना डेटा आहे.", crop_note=""),
+}
+
+# ---- keyword routing (English, Hindi, Marathi, plus common romanised words) ----------------------------------------------
+INTENTS = {
+    "weather": ["weather", "temperature", "forecast", "rain", "mausam", "barish", "मौसम", "तापमान", "बारिश", "पाऊस", "हवामान", "अंदाज", "गर्मी कैसी", "तापमान"],
+    "risk": ["risk", "hazard", "danger", "alert", "warning", "drought", "heat", "flood", "fungal", "disease", "cold", "khatra", "jokhim", "जोखिम", "खतरा", "सूखा", "रोग", "चेतावनी", "फफूंद", "बाढ़",
+             "धोका", "धोके", "दुष्काळ", "उष्ण", "इशारा", "बुरशी", "ठंड", "थंडी"],
+    "irrigation": ["irrigat", "water", "moisture", "sinchai", "pani", "सिंचाई", "पानी", "नमी", "सिंचन", "पाणी", "ओलावा"],
+    "stage": ["stage", "growth", "harvest", "sowing", "sown", "grow", "days", "awastha", "अवस्थ", "बढ़वार", "कटाई", "बुवाई", "वृद्धि", "वाढ", "काढणी", "पेरणी", "दिवस", "दिन"],
+    "budget": ["budget", "cost", "investment", "money", "spend", "rupee", "kharch", "बजट", "खर्च", "लागत", "निवेश", "पैसा", "पैसे", "बजेट", "गुंतवणूक", "खर्चा"],
+    "plan": ["plan", "allocation", "acres", "crop mix", "layout", "yojana", "योजना", "आवंटन", "एकड़", "नियोजन", "एकर", "बँटवारे", "वाटणी"],
+    "optim": ["optim", "profit", "cvar", "resilience", "baseline", "compare", "comparison", "result", "labh", "लाभ", "मुनाफा", "तुलना", "परिणाम", "ऑप्टिमाइज़", "नफा", "तोटा", "निकाल", "ऑप्टिमायझ", "घाटा", "लचीलापन", "लवचिकता"],
+    "report": ["report", "pdf", "download", "रिपोर्ट", "डाउनलोड", "अहवाल", "रिपोर्ट"],
+    "summary": ["summary", "overview", "today", "what should i do", "status", "सारांश", "आज", "क्या करूं", "काय करू", "स्थिति", "सद्यस्थिती", "संक्षेप"],
+}
+HAZARD_WORDS = {"drought": ["drought", "dry", "सूखा", "शुष्क", "दुष्काळ", "कोरडा"], "heat": ["heat", "hot", "गर्मी", "उष्ण"], "rain": ["heavy rain", "भारी बारिश", "अतिवृष्टी"],
+                "flood": ["flood", "waterlog", "बाढ़", "जलभराव", "पाणी साचणे"], "cold": ["cold", "frost", "ठंड", "पाला", "थंडी"], "fungal": ["fungal", "fungus", "disease", "फफूंद", "रोग", "बुरशी"]}
